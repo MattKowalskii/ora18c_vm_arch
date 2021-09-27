@@ -39,18 +39,30 @@ At this point, you are going to need to head over to [oracle.com](https://edeliv
 
 Creating a vm in virt-manager is easy, just follow the steps the GUI gives you.
 - Click the big plus button.
+
+
 ![Screenshot from 2021-09-27 21-38-13.png](../_resources/ad3079266572490d9b1c6ed896ca4102.png)
 - This screen will popup, choose for local install media and continue.
+
+
 ![Screenshot from 2021-09-27 21-46-12.png](../_resources/ba8219f647b24df5ab0ee6d1d96fb3de.png)
 - Choose the RHEL .iso you downloaded and specify the specific version if it is not automatically detected.
+
+
 ![47929b7403e0fa10358b72121979d4c6.png](../_resources/03316649afca43f88b87455763e59148.png)
 - Specify how much RAM and CPU you want to assign to the vm, for my use case, 2Gb RAM and 4 vCPU cores is plenty of power.
+
+
 ![1249b8c2afa5af23a6ac692f99748e66.png](../_resources/481c74e2fe204ff3900b18084bc31d88.png)
 - Make sure storage is enabled for the vm, and assign it a reasonable amount of space, 20Gb is an unenforced minimum.
+
+
 ![092a7d19d7792da9260a5ad84832ab75.png](../_resources/774e696b91db4e39a4c45738a330d246.png)
 - Name your vm and check the box `Customize configuration before install` 
 You will land on a new window, detailing all the devices and configurations related to the vm you are about to create. We are here to add a memballoon device, this device dramatically reduces the amount of ram a vm needs during runtime. It dynamically scales with usage. This way, your vm isn't constantly occupying all the RAM you have allocated to it.
 - Switch to the XML view and scroll down to the end of the `<devices>` section.
+
+
 ![Screenshot from 2021-09-27 21-58-39.png](../_resources/ed88efea022146399bd47869c36511c8.png)
 - Place your cursor above `</devices>` and add the following line:
 `<memballoon model='virtio'/>`. If this line is already present, don't duplicate it.
